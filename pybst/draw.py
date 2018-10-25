@@ -18,7 +18,6 @@
 
 import matplotlib.pyplot as plt
 import networkx as nx
-import bstree as bst
 
 def _get_pos_list(tree):
     """
@@ -187,9 +186,9 @@ def plot_tree(tree, node_size=800):
         nx.draw_networkx_edges(G, pos)
         nx.draw_networkx_labels(G, pos, labels, font_color='w')
     else:
-        nx.draw_networkx_nodes(G, pos, node_size=node_size, node_color='r')
+        nx.draw_networkx_nodes(G, pos, node_size=node_size, node_color='lightgray')
         nx.draw_networkx_edges(G, pos)
-        nx.draw_networkx_labels(G, pos, labels)
+        nx.draw_networkx_labels(G, pos, labels, font_color='black')
 
     plt.axis('off')
     plt.show()
