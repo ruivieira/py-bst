@@ -18,7 +18,6 @@
 
 import matplotlib.pyplot as plt
 import networkx as nx
-import bstree as bst
 
 def _get_pos_list(tree):
     """
@@ -161,13 +160,13 @@ def _get_color_list(tree):
 
     return colorlist
 
-def plot_tree(tree):
+def plot_tree(tree, node_size=800):
     """
     plot_tree(tree). Utilizes networkx and the methods above
     to create a graph to represent a binary search tree, and
     then utilizes pyplot to draw the tree to the screen.
     """
-    G=nx.Graph()
+    G = nx.Graph()
 
     pos = _get_pos_list(tree)
     nodes = [x for x in pos.keys()]
@@ -182,14 +181,14 @@ def plot_tree(tree):
     G.add_edges_from(edges)
     G.add_nodes_from(nodes)
 
-    if len(colors) > 0:
-        nx.draw_networkx_nodes(G,pos,node_size=400,node_color=colors)
-        nx.draw_networkx_edges(G,pos)
-        nx.draw_networkx_labels(G,pos,labels,font_color='w')
+    if not colors:
+        nx.draw_networkx_nodes(G, pos, node_size=node_size, node_color=colors)
+        nx.draw_networkx_edges(G, pos)
+        nx.draw_networkx_labels(G, pos, labels, font_color='w')
     else:
-        nx.draw_networkx_nodes(G,pos,node_size=400,node_color='r')
-        nx.draw_networkx_edges(G,pos)
-        nx.draw_networkx_labels(G,pos,labels)
+        nx.draw_networkx_nodes(G, pos, node_size=node_size, node_color='lightgray')
+        nx.draw_networkx_edges(G, pos)
+        nx.draw_networkx_labels(G, pos, labels, font_color='black')
 
     plt.axis('off')
     plt.show()
